@@ -40,7 +40,7 @@ class Corpus(object):
         if np.min(list(dictionary.values())) != 0:
             raise Exception('Dictionary ids should start at zero')
 
-    def fit(self, corpus, window=10, ignore_missing=False):
+    def fit(self, corpus, window=10, ignore_missing=False, distance_scaling=True):
         """
         Perform a pass through the corpus to construct
         the cooccurrence matrix.
@@ -61,7 +61,8 @@ class Corpus(object):
                                                     self.dictionary,
                                                     int(self.dictionary_supplied),
                                                     int(window),
-                                                    int(ignore_missing))
+                                                    int(ignore_missing),
+                                                    distance_scaling)
 
     def save(self, filename):
 
